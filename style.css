@@ -1,0 +1,10 @@
+body {
+  background-color: #333;
+}
+
+.col {
+  height: 100px;
+  flex: 0 0 100px;
+
+  border: 1px solid #555;
+}
