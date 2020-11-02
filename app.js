@@ -65,10 +65,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
         // now i'm in the bg-color class
         // need to check if the new bg color i wanna apply isn't already applied
-
+        let newRandomColor;
         do {
           const randomIndex = Math.floor(Math.random() * 5);
-          const newRandomColor = `bg-${bgColors[randomIndex]}`;
+          newRandomColor = `bg-${bgColors[randomIndex]}`;
+
           //   console.log('new ran col:', newRandomColor);
           //   console.log(typeof newRandomColor);
           if (element === newRandomColor) {
@@ -81,6 +82,20 @@ window.addEventListener('DOMContentLoaded', () => {
             currentTarget(e).classList.add(newRandomColor);
           }
         } while (element === newRandomColor);
+
+        /* alternative while loop
+
+        let newRandomColor = element;
+        while (element === newRandomColor)
+        {
+            const randomIndex = Math.floor(Math.random() * 5);
+            newRandomColor = `bg-${bgColors[randomIndex]}`;
+        }       
+        //   change the current color
+        currentTarget(e).classList.remove(element);
+        // add new bg class
+        currentTarget(e).classList.add(newRandomColor);
+         */
       } else {
         continue;
       }
