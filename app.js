@@ -38,6 +38,7 @@ window.addEventListener('DOMContentLoaded', () => {
     newSquare.addEventListener('mouseover', mouseOverID);
     newSquare.addEventListener('mouseout', mouseOutID);
     newSquare.addEventListener('click', randomBgColor);
+    newSquare.addEventListener('dblclick', squareRemover);
   };
 
   addSquareBtn.addEventListener('click', createDiv);
@@ -53,6 +54,8 @@ window.addEventListener('DOMContentLoaded', () => {
     currentTarget(e).innerText = '';
   };
   const bgColors = ['primary', 'info', 'success', 'danger', 'warning'];
+
+  //   random bgCol at interval
 
   const randomBgColor = (e) => {
     //   loop to get the bootstrap bg class
@@ -98,6 +101,48 @@ window.addEventListener('DOMContentLoaded', () => {
          */
       } else {
         continue;
+      }
+    }
+  };
+
+  const squareRemover = (e) => {
+    // console.log(currentTarget(e).id);
+    // console.log(typeof currentTarget(e).id);
+    const squares = document.querySelectorAll('.col');
+    // console.log(squares);
+    // id even
+    if (parseInt(currentTarget(e).id) % 2 === 0) {
+      //   console.log(`id: ${currentTarget(e).id} even`);
+      for (let i = 0; i < squares.length; i++) {
+        let element = squares[i];
+
+        if (element === currentTarget(e)) {
+          //   console.log(squares[i + 1]);
+          if (squares[i + 1] === undefined) {
+            alert("there isn't a square to remove after this");
+          } else {
+            squares[i + 1].remove();
+          }
+        } else {
+          continue;
+        }
+      }
+    } else {
+      // id odd
+      //   console.log(`id: ${currentTarget(e).id} odd`);
+      for (let i = 0; i < squares.length; i++) {
+        let element = squares[i];
+
+        if (element === currentTarget(e)) {
+          //   console.log(squares[i + 1]);
+          if (squares[i - 1] === undefined) {
+            alert("there isn't a square to remove before this");
+          } else {
+            squares[i + -1].remove();
+          }
+        } else {
+          continue;
+        }
       }
     }
   };
