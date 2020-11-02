@@ -55,22 +55,34 @@ window.addEventListener('DOMContentLoaded', () => {
   const bgColors = ['primary', 'info', 'success', 'danger', 'warning'];
 
   const randomBgColor = (e) => {
-    const randomIndex = Math.floor(Math.random() * 5);
-
+    //   loop to get the bootstrap bg class
     for (let element of currentTarget(e).classList) {
-      // need to check if the previous bg color
       //   console.log(element);
 
       if (element.slice(0, 2) === 'bg') {
         // console.log(element);
-        // remove that class
+        // console.log(typeof element);
+
+        // now i'm in the bg-color class
+        // need to check if the new bg color i wanna apply isn't already applied
+
         do {
+          const randomIndex = Math.floor(Math.random() * 5);
+          const newRandomColor = `bg-${bgColors[randomIndex]}`;
+          //   console.log('new ran col:', newRandomColor);
+          //   console.log(typeof newRandomColor);
+          if (element === newRandomColor) {
+            continue; // and pick a new random color
+          } else {
+            //   change the current color
+            currentTarget(e).classList.remove(element);
+            // add new bg class
 
-        } while ()
-        currentTarget(e).classList.remove(element);
-        // add new bg class
-
-        currentTarget(e).classList.add(`bg-${bgColors[randomIndex]}`);
+            currentTarget(e).classList.add(newRandomColor);
+          }
+        } while (element === newRandomColor);
+      } else {
+        continue;
       }
     }
   };
