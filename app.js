@@ -59,35 +59,35 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const randomBgColor = (e) => {
     //   loop to get the bootstrap bg class
-    setInterval(() => {
-      for (let element of currentTarget(e).classList) {
-        //   console.log(element);
 
-        if (element.slice(0, 2) === 'bg') {
-          // console.log(element);
-          // console.log(typeof element);
+    for (let element of currentTarget(e).classList) {
+      //   console.log(element);
 
-          // now i'm in the bg-color class
-          // need to check if the new bg color i wanna apply isn't already applied
-          let newRandomColor;
-          do {
-            const randomIndex = Math.floor(Math.random() * 5);
-            newRandomColor = `bg-${bgColors[randomIndex]}`;
+      if (element.slice(0, 2) === 'bg') {
+        // console.log(element);
+        // console.log(typeof element);
 
-            //   console.log('new ran col:', newRandomColor);
-            //   console.log(typeof newRandomColor);
-            if (element === newRandomColor) {
-              continue; // and pick a new random color
-            } else {
-              //   change the current color
-              currentTarget(e).classList.remove(element);
-              // add new bg class
+        // now i'm in the bg-color class
+        // need to check if the new bg color i wanna apply isn't already applied
+        let newRandomColor;
+        do {
+          const randomIndex = Math.floor(Math.random() * 5);
+          newRandomColor = `bg-${bgColors[randomIndex]}`;
 
-              currentTarget(e).classList.add(newRandomColor);
-            }
-          } while (element === newRandomColor);
+          //   console.log('new ran col:', newRandomColor);
+          //   console.log(typeof newRandomColor);
+          if (element === newRandomColor) {
+            continue; // and pick a new random color
+          } else {
+            //   change the current color
+            currentTarget(e).classList.remove(element);
+            // add new bg class
 
-          /* alternative while loop
+            currentTarget(e).classList.add(newRandomColor);
+          }
+        } while (element === newRandomColor);
+
+        /* alternative while loop
       
               let newRandomColor = element;
               while (element === newRandomColor)
@@ -100,11 +100,10 @@ window.addEventListener('DOMContentLoaded', () => {
               // add new bg class
               currentTarget(e).classList.add(newRandomColor);
                */
-        } else {
-          continue;
-        }
+      } else {
+        continue;
       }
-    }, 500);
+    }
   };
 
   const squareRemover = (e) => {
